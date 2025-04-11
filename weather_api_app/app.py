@@ -1,20 +1,22 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 from vc_api import fetch_data
+from cache import cache
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/", methods = ["GET"])
 
 def index():
+    location = request.args.get("location")
+    api_key = os.getenv("API_KEY")
 
-    if request.method == "POST":
-        location = request.form["location"]
+    data = fetch_data(location, api_key)
 
-        data = fetch_data(location)
-
-        return render_template("index.html", data = data)
-    
-    return render_template("index.html", data = None)
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)
