@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from vc_api import fetch_data
+from weather import fetch_data
 from cache import cache
 from dotenv import load_dotenv
 import os
