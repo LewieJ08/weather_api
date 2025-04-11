@@ -1,10 +1,14 @@
 import requests
+import json
 
-def fetch_data(location):
+def fetch_data(location, API_KEY):
 
-    URL =  f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?unitGroup=us&key=UEFSR67YAH9UT9QUT52UKPV8B&contentType=json"
-    data = requests.get(URL)
-    if data.status_code == "200":
+    URL =  f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?unitGroup=us&key={API_KEY}&contentType=json"
+    data = requests.request("GET", URL)
+
+    if data.status_code != 200:
+        return {"Unexpected Status code": data.status_code}
+    
+    else:
         data = data.json()
-
-        print(data)
+        return data
