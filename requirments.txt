@@ -1,5 +1,0 @@
-Flask=3.1.0
-Flask-Limiter=3.12
-requests=2.32.2
-redis=5.2.1
-dotenv=0.9.9
