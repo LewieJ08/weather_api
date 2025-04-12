@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from weather import fetch_data
 from cache import cache, fetch
@@ -14,18 +14,24 @@ app = Flask(__name__)
 
 def index():
     location = request.args.get("location")
+    if not location:
+        return jsonify({"Unexpected error": "Location empty"})
+    
     api_key = os.getenv("API_KEY")
     redis_url = os.getenv("REDIS_URL")
 
     data = fetch(location, redis_url)
+    
     if data != None:
-        return data
+        data = json.loads(data)
+        return jsonify(data)
+    
     else:
         data = fetch_data(location, api_key)
-        cache_data = json.dumps(data,indent = 4)
+        cache_data = json.dumps(data)
         cache(location, cache_data, redis_url)
   
-    return data
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)
