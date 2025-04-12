@@ -10,4 +10,5 @@ def fetch_data(location, API_KEY):
     
     else:
         data = data.json()
+        print("API request successful")
         return data
