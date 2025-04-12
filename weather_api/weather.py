@@ -10,4 +10,7 @@ def fetch_data(location, API_KEY):
     
     else:
         data = data.json()
+        if data["address"] == "None":
+            return {"Unexpected error": "Location empty"}
+        
         return data
