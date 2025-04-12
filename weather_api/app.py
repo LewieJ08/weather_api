@@ -13,9 +13,11 @@ app = Flask(__name__)
 def index():
     location = request.args.get("location")
     api_key = os.getenv("API_KEY")
+    redis_url = os.getenv("REDIS_URL")
 
     data = fetch_data(location, api_key)
-
+    cache(data, redis_url)
+  
     return jsonify(data)
 
 if __name__ == "__main__":
