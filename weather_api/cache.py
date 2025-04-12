@@ -11,24 +11,25 @@ def fetch(location, redis_url):
             print("Fetching data from cache...")
             return data
         else:
-            print("Making API request")
+            print("Making API request...")
             return None
     
     except redis.ConnectionError:
-        print("Making API request")
+        print("Making API request...")
         return None 
     
     except redis.TimeoutError:
-        print("Making API request")
+        print("Making API request...")
+        return None
     
     except redis.ResponseError as e:
         print(f"Redis command error: {e}")
-        print("Making API request")
+        print("Making API request..")
         return None
 
     except Exception as e:
         print(f"Unexpected error: {e}")
-        print("Making API request")
+        print("Making API request...")
         return None
     
 def cache(location, data, redis_url):
