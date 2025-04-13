@@ -20,7 +20,7 @@ setup(
     author="Lewie Jackson",
     author_email="LewieJ08@gmail.com",
     description="A simple weather api built with flask that uses redis for caching",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/LewieJ08/weather_api",  
     classifiers=[
