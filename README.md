@@ -86,7 +86,7 @@ pip install .
 
 Start the API:
 ```bash
-cd weather_api #if not in package location already
+cd weather_api # ONLY if not in package location already
 weather-api
 ```
 
@@ -104,7 +104,7 @@ To run this project, you'll need to create a `.env` file that includes your own 
 
 #### 🐧 Linux / 🍎 macOS / 🪟 Windows (WSL):
 ```bash
-cd weather_api #if not in package location already
+cd weather_api #ONLY if not in package location already
 cat > .env <<EOL
 API_KEY = your_visual_crossing_api_key
 REDIS_URL = redis://localhost:6379/0
@@ -118,11 +118,11 @@ nano .env
 
 #### 🪟 Windows (PowerShell or CMD, NOT using WSL):
 ```bash
-cd weather_app #if not in package location already
+cd weather_app #ONLY if not in package location already
 @"
-API_KEY = your_visual_crossing_api_key
-REDIS_URL = redis://localhost:6379/0
-"@ > .env
+API_KEY=your_visual_crossing_api_key
+REDIS_URL=redis://localhost:6379/0
+"@ | Out-File -FilePath .env -Encoding utf8
 ```
 Then open the .env file to replace your_visual_crossing_api_key with your real key:
 ```bash
