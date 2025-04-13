@@ -37,8 +37,8 @@ def cache(location, data, redis_url):
     
     try:
         r = redis.Redis(host=parsed_url.hostname, port=parsed_url.port)
-        r.set(location, data, ex=300)
-        print("Data cached for 5 minutes")
+        r.set(location, data, ex=43200)
+        print("Data cached for 12 hours")
         current_cache = r.keys()
         print(f"Current cached locations: {current_cache}")
     except redis.ConnectionError:
