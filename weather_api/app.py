@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from weather import fetch_data
-from cache import cache, fetch
+from .weather import fetch_data
+from .cache import cache, fetch
 from dotenv import load_dotenv
 import os
 import json
