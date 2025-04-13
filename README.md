@@ -137,3 +137,5 @@ Open this URL replacing LOCATION with a random location:
 ## 🔒 Rate Limiting
 To prevent abuse, this app uses Flask-Limiter for rate limiting. You can configure rate limits in the app code as needed. By defult this is set to **10 requests an hour**
 
+## Roadmap.sh Project:
+https://roadmap.sh/projects/weather-api-wrapper-service
